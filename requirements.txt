@@ -1,0 +1,4 @@
+# SafePlate AI Dependencies
+# SafePlate AI is built with 0 third-party mandatory runtime dependencies (pure Python standard library).
+# Optional dependencies:
+requests>=2.31.0

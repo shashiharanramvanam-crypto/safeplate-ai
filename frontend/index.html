@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafePlate AI — Safe Meal Planner & Allergy Shield for Friends</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/safeplate.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    
+    <!-- Header -->
+    <header>
+      <div class="brand-wrap">
+        <span class="brand-logo">🥗</span>
+        <div>
+          <h1>SAFEPLATE AI</h1>
+          <div class="subtitle">Zero-Hallucination Safe Meal Planner & Allergy Shield &bull; Built for a Friend</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="engine-pill">
+          <span class="status-dot"></span>
+          <span>Engine: <strong id="engine-model">Detecting...</strong></span>
+        </div>
+        <button id="btn-why-open" class="btn btn-primary">🛡️ Why Open AI Matters</button>
+      </div>
+    </header>
+
+    <!-- Friend Profile Selector Bar -->
+    <section class="profile-bar">
+      <div class="profile-info">
+        <div id="prof-avatar" class="profile-avatar">🥑</div>
+        <div class="profile-details">
+          <h2>Cooking for: <span id="prof-name">Alex (Roommate)</span></h2>
+          <div style="font-size:0.85rem;color:#6b7280;">
+            <span id="prof-relation">Roommate & Best Friend</span> &bull; 
+            Severity: <strong id="prof-severity" style="color:#d90429;">Severe Celiac + Nut Anaphylaxis</strong>
+          </div>
+          <div id="allergy-tags" class="allergy-tags"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;">
+        <label style="font-size:0.85rem;font-weight:600;color:#2d5a4c;">Switch Friend:</label>
+        <select id="select-friend" class="input-select" style="width:auto;min-width:180px;"></select>
+      </div>
+    </section>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+      
+      <!-- Left Column: Ingredient Scanner & Pantry -->
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        
+        <!-- Section 1: Zero-Hallucination Ingredient Scanner -->
+        <section class="section-box">
+          <div class="section-header">
+            <div class="section-title">
+              <span>🔍 INGREDIENT & RECIPE ALLERGY SCANNER</span>
+            </div>
+            <span style="font-size:0.75rem;background:#fef3c7;color:#b45309;padding:3px 8px;border-radius:4px;font-weight:bold;">
+              Deterministic Safety Rulebook
+            </span>
+          </div>
+          <p style="font-size:0.85rem;color:#6b7280;margin-bottom:12px;">
+            Paste an ingredient list, grocery item, or web recipe text. Evaluated instantly against hidden wheat, malt, derivatives, and cross-reactive nut oils.
+          </p>
+
+          <form id="form-scan">
+            <div class="form-group">
+              <label>Ingredients or Recipe Text:</label>
+              <textarea id="in-scan-text" class="input-textarea" rows="3" placeholder="e.g. Chicken, soy sauce, garlic, sesame oil, modified food starch, peanuts..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+              🛡️ Scan for Friend's Allergies
+            </button>
+          </form>
+
+          <div id="scan-result" class="scan-result-card" style="display:none;"></div>
+        </section>
+
+        <!-- Section 2: Verified Safe Pantry Staples -->
+        <section class="section-box">
+          <div class="section-header">
+            <div class="section-title">
+              <span>🥫 VERIFIED SAFE PANTRY STAPLES</span>
+            </div>
+            <button id="btn-add-pantry" class="btn" style="padding:4px 10px;font-size:0.8rem;">+ Add Staple</button>
+          </div>
+          <p style="font-size:0.85rem;color:#6b7280;">
+            Ingredients pre-screened and certified safe in our shared apartment kitchen.
+          </p>
+
+          <div id="pantry-grid" class="pantry-grid"></div>
+        </section>
+
+      </div>
+
+      <!-- Right Column: Meal Architect & Dining Card -->
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        
+        <!-- Section 3: Safe Meal Architect -->
+        <section class="section-box">
+          <div class="section-header">
+            <div class="section-title">
+              <span>🥑 GEMMA 2 SAFE MEAL ARCHITECT</span>
+            </div>
+            <span style="font-size:0.75rem;color:#10b981;font-weight:bold;">Zero Data Egress</span>
+          </div>
+          <p style="font-size:0.85rem;color:#6b7280;margin-bottom:14px;">
+            Generates custom dinner recipes incorporating available safe pantry items, dedicated kitchen cross-contamination rules, and certified substitutions.
+          </p>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+            <button id="btn-generate-recipe" class="btn btn-primary" style="flex:1;justify-content:center;">
+              🥑 Cook a Safe Meal with Gemma 2
+            </button>
+            <button id="btn-dining-card" class="btn" title="Generate restaurant allergy card for servers">
+              📋 Server Allergy Card
+            </button>
+            <button id="btn-export-card" class="btn" title="Download printable fridge cross-contamination guide">
+              ⬇ Fridge Guide
+            </button>
+          </div>
+
+          <div id="recipe-box" class="recipe-box" style="display:none;"></div>
+
+          <div style="margin-top:16px;background:#f9fafb;border-left:4px solid #e69500;padding:12px 14px;border-radius:4px;font-size:0.82rem;color:#4b5563;">
+            <strong>Roommate Cross-Contamination Warning:</strong><br>
+            <span id="prof-notes">Must use dedicated gluten-free cutting board and separate toaster. Epipen carrier.</span>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Modal: Add Pantry Item -->
+    <div id="modal-pantry" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-title">🥫 Add Safe Pantry Staple</div>
+        <form id="form-pantry">
+          <div class="form-group">
+            <label>Staple Name:</label>
+            <input type="text" id="in-pantry-name" class="input-text" placeholder="e.g. Certified GF Rolled Oats or SunButter" required>
+          </div>
+          <div class="form-group">
+            <label>Category:</label>
+            <select id="in-pantry-cat" class="input-select">
+              <option value="grains">Grains & Flours</option>
+              <option value="condiments">Condiments & Oils</option>
+              <option value="protein">Meats & Proteins</option>
+              <option value="produce">Fresh Produce</option>
+              <option value="liquids">Baking & Liquids</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Safety Verification Notes:</label>
+            <input type="text" id="in-pantry-notes" class="input-text" placeholder="e.g. Certified GF facility, peanut-free guarantee">
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px;">
+            <button type="button" id="close-modal-pantry" class="btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save to Pantry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Why Open AI Matters -->
+    <div id="modal-why-open" class="modal-overlay">
+      <div class="modal-content" style="max-width:640px;">
+        <div class="modal-title">🛡️ Why Open Innovation Matters for Food Allergies</div>
+        <div style="color:#4b5563;line-height:1.7;font-size:0.92rem;max-height:420px;overflow-y:auto;padding-right:8px;">
+          <p><strong>1. Health Privacy & Non-Negotiable Medical Sovereignty:</strong><br>
+          Anaphylaxis, severe Celiac auto-immune reactions, and medical allergy records are among the most sensitive personal data a human can have. Pushing your roommate's medical diagnoses and daily dietary consumption into closed commercial cloud APIs allows private health profiles to be ingested, mined, and shared across ad networks. With local <strong>Google Gemma 2</strong>, all inference stays entirely on your own device's RAM.</p>
+          <br>
+          <p><strong>2. Deterministic Safety Guards over Cloud Hallucination:</strong><br>
+          General-purpose cloud LLMs frequently "hallucinate" food safety. They will casually suggest Worcester sauce for a gluten-free meal or pesto for a nut-free meal, with devastating health consequences. SafePlate AI pairs local Gemma 2 with an air-gapped deterministic allergen rulebook that screens and verifies every single ingredient before recommendation.</p>
+          <br>
+          <p><strong>3. Works in Air-Gapped Kitchens & Rural Cabins:</strong><br>
+          When cooking at an off-grid vacation rental, camping, or checking ingredients in a subterranean grocery aisle with zero cell reception, cloud APIs fail. SafePlate AI runs 100% locally with zero internet dependency.</p>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:20px;">
+          <button type="button" id="close-modal-why" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div>"Food is an act of love. Cooking safely for someone you love is the purest form of care."</div>
+      <div style="margin-top:6px;font-size:0.8rem;color:#2d5a4c;">
+        SafePlate AI &bull; Built with Google Gemma 2 2B open weights &bull; Hacktoberfest 2026: Build for a Friend
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

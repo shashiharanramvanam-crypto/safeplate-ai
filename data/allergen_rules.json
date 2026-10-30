@@ -1,0 +1,97 @@
+{
+  "allergen_taxonomies": {
+    "gluten": {
+      "display_name": "Gluten & Wheat (Celiac Safe)",
+      "triggers": [
+        "wheat", "barley", "rye", "spelt", "kamut", "triticale", "farro",
+        "malt", "malt extract", "maltodextrin (wheat)", "brewer's yeast",
+        "soy sauce", "seitan", "semolina", "couscous", "bulgur", "graham",
+        "vital wheat gluten", "wheat flour", "all-purpose flour", "bread flour"
+      ],
+      "safe_substitutes": [
+        "Tamari (100% Certified Gluten-Free)",
+        "Coconut Aminos",
+        "Cassava Flour",
+        "Almond Flour (check nut allergy)",
+        "Rice Flour & Tapioca Starch blend",
+        "Certified Gluten-Free Rolled Oats"
+      ]
+    },
+    "tree_nuts": {
+      "display_name": "Tree Nuts & Peanuts (Anaphylaxis Risk)",
+      "triggers": [
+        "peanut", "peanuts", "peanut butter", "peanut oil", "almond", "almonds",
+        "walnut", "walnuts", "cashew", "cashews", "pecan", "pecans",
+        "hazelnut", "hazelnuts", "pistachio", "pistachios", "macadamia",
+        "brazil nut", "pine nut", "pine nuts", "praline", "marzipan",
+        "nutmeal", "frangipane", "gianduja"
+      ],
+      "safe_substitutes": [
+        "Sunflower Seed Butter (SunButter)",
+        "Roasted Pumpkin Seeds (Pepitas)",
+        "Toasted White Sesame Seeds (Tahini - check sesame allergy)",
+        "Hemp Hearts",
+        "Toasted Chickpeas (crunchy salad topping)"
+      ]
+    },
+    "dairy": {
+      "display_name": "Dairy & Lactose",
+      "triggers": [
+        "milk", "butter", "cheese", "cream", "whey", "casein", "caseinate",
+        "ghee", "curds", "lactose", "sour cream", "yogurt", "custard"
+      ],
+      "safe_substitutes": [
+        "Extra Virgin Olive Oil or Avocado Oil (for butter)",
+        "Full-Fat Coconut Milk (for cream)",
+        "Nutritional Yeast (for cheesy umami)",
+        "Oat Milk (Gluten-Free certified)",
+        "Unsweetened Almond Milk"
+      ]
+    },
+    "shellfish": {
+      "display_name": "Shellfish & Crustaceans",
+      "triggers": [
+        "shrimp", "prawn", "crab", "lobster", "crawfish", "clam", "mussel",
+        "oyster", "scallop", "squid", "calamari", "octopus", "fish sauce (shellfish blend)",
+        "oyster sauce", "imitation crab (surimi)"
+      ],
+      "safe_substitutes": [
+        "King Oyster Mushrooms (sliced into 'scallops')",
+        "Hearts of Palm (for crab cakes)",
+        "Vegan 'Fish' Sauce (kelp & mushroom broth)",
+        "Shiitake Mushrooms (rich oceanic umami)"
+      ]
+    }
+  },
+  "profiles": [
+    {
+      "id": "alex-roommate",
+      "name": "Alex (Roommate)",
+      "relation": "Roommate & Best Friend",
+      "avatar": "🥑",
+      "allergies": ["gluten", "tree_nuts"],
+      "severity": "High (Severe Celiac Disease + Nut Anaphylaxis)",
+      "notes": "Must use dedicated gluten-free cutting board and separate toaster. Epipen carrier.",
+      "favorite_foods": ["Crispy Chicken Carnitas", "Thai Coconut Curry (Tamari)", "Risotto", "Guacamole"]
+    },
+    {
+      "id": "maya-friend",
+      "name": "Maya (Study Buddy)",
+      "relation": "College Friend",
+      "avatar": "🥗",
+      "allergies": ["dairy", "shellfish"],
+      "severity": "Moderate to High",
+      "notes": "Strictly avoids all dairy and oyster/fish sauce cross-contact.",
+      "favorite_foods": ["Mediterranean Grain Bowls", "Smoked Salmon", "Lentil Dal"]
+    }
+  ],
+  "pantry_items": [
+    { "id": "p1", "name": "Jasmine Rice", "category": "grains", "safe_for": ["alex-roommate", "maya-friend"], "notes": "Naturally gluten-free" },
+    { "id": "p2", "name": "Coconut Milk (Canned)", "category": "liquids", "safe_for": ["alex-roommate", "maya-friend"], "notes": "Unsweetened pure coconut" },
+    { "id": "p3", "name": "Certified Gluten-Free Tamari", "category": "condiments", "safe_for": ["alex-roommate", "maya-friend"], "notes": "San-J 100% GF, no wheat" },
+    { "id": "p4", "name": "Chicken Breast", "category": "protein", "safe_for": ["alex-roommate", "maya-friend"], "notes": "Fresh poultry" },
+    { "id": "p5", "name": "Sunflower Seed Butter", "category": "spreads", "safe_for": ["alex-roommate", "maya-friend"], "notes": "Nut-free peanut butter alternative" },
+    { "id": "p6", "name": "Fresh Garlic & Ginger", "category": "produce", "safe_for": ["alex-roommate", "maya-friend"], "notes": "Aromatic staples" },
+    { "id": "p7", "name": "Bell Peppers & Limes", "category": "produce", "safe_for": ["alex-roommate", "maya-friend"], "notes": "Fresh vegetables" }
+  ]
+}
